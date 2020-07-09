@@ -1,4 +1,4 @@
-# SignedBinaryCalculator
+# signedBinaryCalculator
 Calculating signed (negative) binary numbers. There are five representations in this script:
 (positive) unsigned
 Sign-Magnitude  
