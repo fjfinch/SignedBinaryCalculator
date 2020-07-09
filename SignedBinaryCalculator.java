@@ -1,5 +1,3 @@
-package fun;
-
 import java.util.Scanner;
 
 public class SignedBinaryCalculator 
@@ -10,10 +8,23 @@ public class SignedBinaryCalculator
 	{
 		try(Scanner scanner = new Scanner(System.in))
 		{
-			System.out.print("Gimme number:\t");
-			long decimal = scanner.nextLong();
+			long decimal = 0;
+			while(true)
+			{
+				try
+				{
+					System.out.print("Decimal number:\t ");
+					decimal = scanner.nextLong();
+					break;
+				}
+				catch(java.util.InputMismatchException e)
+				{
+					System.out.println("Give a decimal within range [-2^63 - 2^63-1]");
+					scanner.nextLine();
+				}
+			}
 			
-			System.out.print("Amount bits:\t");
+			System.out.print("Minimum bits:\t ");
 			amountBits = scanner.nextInt();
 
 			System.out.println();
