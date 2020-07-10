@@ -1,14 +1,14 @@
 import java.util.Scanner;
 
-public class SignedBinaryCalculator 
+public class SignedBinaryCalculator
 {
-	static int amountBits = 8;
-	
-	public static void main(String[] args) 
+	private static long decimal;
+	private static int amountBits;
+
+	public static void main(String[] args)
 	{
 		try(Scanner scanner = new Scanner(System.in))
 		{
-			long decimal = 0;
 			while(true)
 			{
 				try
@@ -28,15 +28,15 @@ public class SignedBinaryCalculator
 			amountBits = scanner.nextInt();
 
 			System.out.println();
-			System.out.printf("%-20s%s\n",	"Unsigned", 		unsigned(decimal));
-			System.out.printf("%-20s%s\n",	"Sign-Magnitude",	signMagnitude(decimal));
-			System.out.printf("%-20s%s\n",	"One's complement",	onesComplement(decimal));
-			System.out.printf("%-20s%s\n",	"Two's complement",	twosComplement(decimal));
-			System.out.printf("%-20s%s\n",	"Offset Binary",	offsetBinary(decimal));
+			System.out.printf("%-20s%s\n",	"Unsigned", 		unsigned());
+			System.out.printf("%-20s%s\n",	"Sign-Magnitude",	signMagnitude());
+			System.out.printf("%-20s%s\n",	"One's Complement",	onesComplement());
+			System.out.printf("%-20s%s\n",	"Two's Complement",	twosComplement());
+			System.out.printf("%-20s%s\n",	"Offset Binary",	offsetBinary());
 		}
 	}
 
-	public static String unsigned(long decimal)
+	public static String unsigned()
 	{
 		if(decimal<0)
 		{
@@ -44,8 +44,8 @@ public class SignedBinaryCalculator
 		}
 		return addBits(Long.toBinaryString(decimal),'0');
 	}
-	
-	public static String signMagnitude(long decimal)
+
+	public static String signMagnitude()
 	{
 		if(decimal==0)
 		{
@@ -61,11 +61,11 @@ public class SignedBinaryCalculator
 		return msb+binary.toString();
 	}
 	
-	public static String onesComplement(long decimal)
+	public static String onesComplement()
 	{
 		if(decimal==0)
 		{
-			return addBits("00",'0')+" or "+addBits("11",'1');
+			return addBits("0",'0')+" or "+addBits("1",'1');
 		}
 		else if(decimal>0)
 		{
@@ -76,11 +76,11 @@ public class SignedBinaryCalculator
 		return addBits(binary.toString(),'1');
 	}
 	
-	public static String twosComplement(long decimal)
+	public static String twosComplement()
 	{
 		if(decimal==0)
 		{
-			return addBits("00",'0');
+			return addBits("0",'0');
 		}
 		else if(decimal>0)
 		{
@@ -95,7 +95,7 @@ public class SignedBinaryCalculator
 		return addBits(binary.toString(),'1');
 	}
 
-	public static String offsetBinary(long decimal)
+	public static String offsetBinary()
 	{
 		if(amountBits>=64) //LONG RANGE -> 63bits
 		{
