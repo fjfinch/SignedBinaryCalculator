@@ -43,4 +43,4 @@ If the given amount of bits is to low or is set to 0, it will automatically over
 Offset binary is a bit different and will give a '-' when a faulty amount of bits is given. 
 
 ## ToDo
-I will be working on a python version.
+* I might make a python version.
